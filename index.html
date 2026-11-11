@@ -2323,7 +2323,7 @@ const FIREBASE_CONFIG = {
     if(!user||!docRef) return;
     if(!getTs()) setTs(Date.now());
     const json=JSON.stringify(data);
-    if(json.length>900000){ setStatus('Too big to sync'); return; }
+    if(new TextEncoder().encode(json).length>900000){ setStatus('Too big to sync'); return; }
     docRef.set({json:json, updatedAt:getTs()})
       .then(()=>setStatus('Synced')).catch(()=>setStatus('Offline – will retry'));
   }

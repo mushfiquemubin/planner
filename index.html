@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0e2338">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
@@ -289,6 +289,16 @@
     #tabbar button svg{ width:22px; height:22px; margin:0; }
     #tabbar button.active{ background:rgba(46,92,246,0.15); color:var(--accent); box-shadow:inset 0 1px 0 rgba(255,255,255,0.55); }
     [data-theme="dark"] #tabbar button.active{ background:rgba(90,162,255,0.22); }
+  }
+  html,body{ touch-action:manipulation; }
+  /* mobile performance: blur only on the tab bar, plain translucent cards, no fixed-attachment background */
+  @media (max-width:860px){
+    body{ background-attachment:scroll !important; }
+    .card, .clock-chip, .icon-btn, .toggle-btn, .modal-box{ -webkit-backdrop-filter:none; backdrop-filter:none; }
+    .card{ background:rgba(255,255,255,0.62); transition:none; }
+    [data-theme="dark"] .card{ background:rgba(34,50,78,0.62); }
+    #sidebar:not(.open){ -webkit-backdrop-filter:none; backdrop-filter:none; }
+    #tabbar{ -webkit-backdrop-filter:blur(18px) saturate(170%); backdrop-filter:blur(18px) saturate(170%); will-change:transform; transform-origin:left bottom; }
   }
   @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } }
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){ #sidebar,.card{ background:rgba(255,255,255,0.92); } [data-theme="dark"] #sidebar,[data-theme="dark"] .card{ background:rgba(14,30,48,0.96); } }
@@ -1727,6 +1737,20 @@ const FIREBASE_CONFIG = {
 if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){
   window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
+/* keep the floating tab bar fixed in size when the page is pinch-zoomed */
+(function(){
+  const vv=window.visualViewport, tb=document.getElementById('tabbar'); if(!vv||!tb) return;
+  let raf=0;
+  function fix(){
+    raf=0; const sc=vv.scale;
+    if(sc<=1.01){ tb.style.transform=''; return; }
+    const H=document.documentElement.clientHeight, k=1/sc;
+    const dx=vv.offsetLeft+12*k-12, dy=vv.offsetTop+vv.height-12*k-(H-12);
+    tb.style.transform='translate('+dx+'px,'+dy+'px) scale('+k+')';
+  }
+  const queue=()=>{ if(!raf) raf=requestAnimationFrame(fix); };
+  vv.addEventListener('resize',queue); vv.addEventListener('scroll',queue);
+})();
 </script>
 </body>
 </html>

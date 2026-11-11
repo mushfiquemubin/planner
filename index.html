@@ -219,6 +219,71 @@
   .touch-dots i{ width:10px; height:10px; border-radius:3px; background:var(--border); flex:0 1 10px; }
   #sidebar-scrim{ display:none; position:fixed; top:0; right:0; bottom:0; left:0; z-index:79; background:transparent; cursor:pointer; -webkit-tap-highlight-color:transparent; }
   #sidebar-scrim.show{ display:block; }
+
+  textarea{ width:100%; padding:9px 11px; border-radius:12px; border:1px solid var(--border); background:rgba(255,255,255,0.35); color:var(--text); font-size:13.5px; margin-top:4px; font-family:inherit; resize:vertical; min-height:56px; }
+  [data-theme="dark"] textarea{ background:rgba(255,255,255,0.07); }
+  .count-chip{ display:inline-block; min-width:20px; text-align:center; padding:1px 7px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-size:11.5px; font-weight:700; margin-left:6px; }
+  .sm-btn{ padding:6px 10px !important; font-size:12px !important; border-radius:9px !important; }
+  /* notebook */
+  .nb-item{ border-top:1px solid var(--border); padding:10px 0; }
+  .nb-item:first-child{ border-top:none; }
+  .nb-title{ font-size:14px; font-weight:600; display:flex; gap:8px; align-items:flex-start; justify-content:space-between; }
+  .nb-title a{ color:var(--accent); text-decoration:none; }
+  .nb-tags{ display:flex; flex-wrap:wrap; gap:5px; margin:6px 0 2px; }
+  .nb-tag{ font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); }
+  .nb-note{ font-size:12.5px; line-height:1.5; margin-top:4px; color:var(--text); white-space:pre-wrap; }
+  .nb-note b{ color:var(--text-secondary); font-weight:600; }
+  .nb-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  /* inbox */
+  .win-row{ display:flex; gap:8px; align-items:center; }
+  .inbox-item{ display:flex; gap:8px; align-items:center; padding:8px 0; border-top:1px solid var(--border); font-size:13.5px; }
+  .inbox-item > span{ flex:1; min-width:0; overflow-wrap:anywhere; }
+  .inbox-item select{ width:auto; max-width:130px; margin:0; padding:6px 8px; font-size:12px; }
+  /* kanban */
+  .view-toggle{ display:flex; gap:8px; margin-bottom:12px; }
+  .kb{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:6px; }
+  .kb-col{ background:var(--accent-soft); border-radius:14px; padding:10px; min-height:70px; }
+  .kb-head{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; color:var(--text-secondary); margin-bottom:8px; }
+  .kb-card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:10px; margin-bottom:8px; }
+  .kb-card .txt{ font-size:13.5px; overflow-wrap:anywhere; }
+  .kb-card.done .txt{ text-decoration:line-through; color:var(--text-secondary); }
+  .kb-meta{ display:flex; gap:6px; align-items:center; margin-top:6px; }
+  .kb-actions{ display:flex; gap:6px; margin-top:8px; }
+  /* calendar */
+  .cal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+  .cal-head .ttl{ font-size:16px; font-weight:700; font-family:var(--font-display); }
+  .cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+  .cal-dow{ font-size:10.5px; font-weight:700; text-align:center; color:var(--text-secondary); padding:2px 0; }
+  .cal-cell{ position:relative; aspect-ratio:1/1; min-height:40px; border:1px solid var(--border); border-radius:10px; background:var(--card); color:var(--text); display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding:4px 0 0; font-size:12.5px; cursor:pointer; }
+  .cal-cell.other{ opacity:.38; }
+  .cal-cell.today{ border-color:var(--accent); font-weight:700; }
+  .cal-cell.sel{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .cal-dots{ display:flex; gap:3px; margin-top:3px; }
+  .cal-dots i{ width:5px; height:5px; border-radius:50%; display:block; }
+  .cal-legend{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; font-size:11.5px; color:var(--text-secondary); }
+  .cal-legend i{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:4px; }
+  .cal-sec{ margin-top:12px; }
+  .cal-sec h4{ margin:0 0 4px; font-size:12px; text-transform:uppercase; letter-spacing:.4px; color:var(--text-secondary); }
+  .cal-line{ font-size:13.5px; padding:5px 0; border-top:1px solid var(--border); overflow-wrap:anywhere; }
+  .cal-line:first-of-type{ border-top:none; }
+  /* time-blocking */
+  .plan-nav{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  .plan-nav .ttl{ font-weight:700; font-size:15px; text-align:center; flex:1; }
+  .tl{ position:relative; margin-top:10px; }
+  .tl-hour{ position:absolute; left:0; right:0; border-top:1px solid var(--border); font-size:10.5px; color:var(--text-secondary); }
+  .tl-hour span{ position:absolute; top:-7px; left:0; background:var(--card); padding-right:4px; }
+  .tl-area{ position:absolute; left:46px; right:0; top:0; bottom:0; }
+  .tl-block{ position:absolute; border-radius:9px; padding:3px 7px; font-size:11.5px; overflow:hidden; color:#fff; background:var(--bc); border:1px solid rgba(255,255,255,0.35); display:flex; flex-direction:column; justify-content:flex-start; }
+  .tl-block.ro{ background:repeating-linear-gradient(135deg,var(--bc),var(--bc) 6px,color-mix(in srgb,var(--bc) 78%,#000) 6px,color-mix(in srgb,var(--bc) 78%,#000) 12px); }
+  .tl-block.done{ opacity:.55; }
+  .tl-block .tl-t{ font-weight:700; display:flex; gap:6px; align-items:center; justify-content:space-between; }
+  .tl-block .tl-t span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .tl-block.done .tl-t span{ text-decoration:line-through; }
+  .tl-block .tl-tm{ opacity:.85; font-size:10.5px; }
+  .tl-btns{ display:flex; gap:4px; flex:0 0 auto; }
+  .tl-btns button{ border:none; background:rgba(255,255,255,0.28); color:#fff; border-radius:6px; width:22px; height:22px; font-size:12px; line-height:1; cursor:pointer; padding:0; }
+  .tl-now{ position:absolute; left:40px; right:0; height:0; border-top:2px solid var(--red); z-index:2; }
+  .tl-now::before{ content:''; position:absolute; left:-4px; top:-5px; width:8px; height:8px; border-radius:50%; background:var(--red); }
   .heatmap-wrap{ overflow-x:auto; padding-bottom:4px; }
   .heatmap-grid{ display:grid; grid-auto-flow:column; grid-template-rows:repeat(7,12px); gap:3px; width:max-content; }
   .heatmap-cell{ width:12px; height:12px; border-radius:3px; background:var(--border); }
@@ -380,8 +445,11 @@
     <section class="section" id="sec-today"></section>
     <section class="section" id="sec-study"></section>
     <section class="section" id="sec-pomodoro"></section>
+    <section class="section" id="sec-plan"></section>
     <section class="section" id="sec-courses"></section>
     <section class="section" id="sec-todo"></section>
+    <section class="section" id="sec-notebook"></section>
+    <section class="section" id="sec-calendar"></section>
     <section class="section" id="sec-deen"></section>
     <section class="section" id="sec-touch"></section>
     <section class="section" id="sec-stats"></section>
@@ -408,6 +476,9 @@ const ICONS = {
   todo: '<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>',
   deen: '<path d="M12 3a6 6 0 009 9 9 9 0 11-9-9z"/>',
   stats: '<path d="M3 3v18h18M7 16l4-4 3 3 5-6"/>',
+  notebook: '<path d="M4 4h12a2 2 0 012 2v14H6a2 2 0 01-2-2V4z"/><path d="M8 9h6M8 13h6"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>',
+  plan: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>',
   touch: '<path d="M9 11V5a2 2 0 014 0v6m0 0V9a2 2 0 014 0v4m-8-2a2 2 0 00-4 0v4a7 7 0 007 7h1a6 6 0 006-6v-3a2 2 0 00-4 0"/>'
 };
 function svgIcon(name){ return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]}</svg>`; }
@@ -416,8 +487,11 @@ const NAV_ITEMS = [
   {id:'today', label:'Today', icon:'today'},
   {id:'study', label:'Study Hrs', icon:'study'},
   {id:'pomodoro', label:'Pomodoro', icon:'pomodoro'},
+  {id:'plan', label:'Plan Day', icon:'plan'},
   {id:'courses', label:'Courses', icon:'courses'},
   {id:'todo', label:'To-Do', icon:'todo'},
+  {id:'notebook', label:'Notebook', icon:'notebook'},
+  {id:'calendar', label:'Calendar', icon:'calendar'},
   {id:'deen', label:'Deen', icon:'deen'},
   {id:'touch', label:'Daily Touch', icon:'touch'},
   {id:'stats', label:'Stats', icon:'stats'}
@@ -445,7 +519,7 @@ const esc = v => String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;')
 let currentDayKey = todayKey();
 let soundOn = true;
 
-let data = { dates:{}, courses:[], todos:{icpc:[],uni:[],personal:[]}, settings:{studyGoal:3, cpGoal:3}, cgpaEntries:[] };
+let data = { dates:{}, courses:[], todos:{icpc:[],uni:[],personal:[]}, settings:{studyGoal:3, cpGoal:3}, cgpaEntries:[], problems:[], inbox:[], blocks:{} };
 let pomodoroState = { running:false, mode:'work', secondsLeft:25*60, totalSeconds:25*60, timerId:null, ambient:'none', ambientNodes:null, endAt:null, volume:0.2 };
 
 function emptyDay(){
@@ -500,6 +574,7 @@ function load(){
       if(!data.todos.personal) data.todos.personal=[];
       if(!data.settings) data.settings={studyGoal:3,cpGoal:3};
       if(!data.cgpaEntries) data.cgpaEntries=[];
+      ensureExtras();
       data.courses.forEach(migrateCourse);
     }
     const theme = localStorage.getItem('planner_theme') || 'light';
@@ -725,7 +800,7 @@ function renderToday(){
   el.innerHTML = `
     ${dueSoon.length ? `<div class="card" style="border-color:var(--red); background:var(--red-soft);">
       <div class="section-title" style="color:var(--red); margin-bottom:6px;">⚠️ Deadline approaching</div>
-      ${dueSoon.map(t=>`<div style="font-size:13px; padding:4px 0;"><strong>${t.text}</strong> <span class="hint" style="margin:0;">(${t.cat} • due ${t.due}${t.daysLeft<0?' — overdue':t.daysLeft===0?' — today':' — in '+t.daysLeft+'d'})</span></div>`).join('')}
+      ${dueSoon.map(t=>`<div style="font-size:13px; padding:4px 0;"><strong>${esc(t.text)}</strong> <span class="hint" style="margin:0;">(${t.cat} • due ${t.due}${t.daysLeft<0?' — overdue':t.daysLeft===0?' — today':' — in '+t.daysLeft+'d'})</span></div>`).join('')}
     </div>` : ''}
     ${examsSoon.length ? `<div class="card" style="border-color:var(--amber); background:var(--amber-soft);">
       <div class="section-title" style="color:var(--amber); margin-bottom:6px;">📝 Exam reminder</div>
@@ -1420,7 +1495,7 @@ function renderTodoList(){
     <div class="todo-item ${t.done?'done':''}" draggable="true" data-id="${t.id}">
       <input type="checkbox" ${t.done?'checked':''} onchange="toggleTodo('${t.id}')" />
       <span class="prio-badge prio-${t.priority||'Medium'}">${t.priority||'Medium'}</span>
-      <span class="txt">${t.text}</span>
+      <span class="txt">${esc(t.text)}</span>
       ${t.due ? `<span class="due-chip">${t.due}</span>` : ''}
       <button class="danger-ghost" onclick="deleteTodo('${t.id}')">×</button>
     </div>
@@ -1774,6 +1849,427 @@ function renderSuccessChart(){
   successChart = new Chart(ctx, {type:'line', data:{labels, datasets:[{label:'Success %', data:scores, borderColor:'#0FBFBF', backgroundColor:'rgba(15,191,191,0.15)', fill:true, tension:0.3}]}, options:{responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true, max:100}}}});
 }
 
+
+/* ============ NOTION-STYLE EXTRAS ============ */
+function ensureExtras(){
+  if(!Array.isArray(data.problems)) data.problems=[];
+  if(!Array.isArray(data.inbox)) data.inbox=[];
+  if(!data.blocks || typeof data.blocks!=='object' || Array.isArray(data.blocks)) data.blocks={};
+}
+const keyToDate = k => new Date(k+'T00:00:00');
+function addDays(key,n){ const d=keyToDate(key); d.setDate(d.getDate()+n); return dateKey(d); }
+function safeUrl(u){
+  u=(u||'').trim(); if(!u) return '';
+  if(!/^https?:\/\//i.test(u)) u='https://'+u;
+  try{ const x=new URL(u); return (x.protocol==='http:'||x.protocol==='https:') ? x.href : ''; }catch(e){ return ''; }
+}
+const prettyDate = k => keyToDate(k).toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric'});
+const TODO_CATS = {icpc:'ICPC', uni:'Uni', personal:'Personal'};
+
+/* ---------- Problem Notebook (spaced revision) ---------- */
+const REVIEW_STEPS = [1,3,7,14,30];
+const PROBLEM_TAGS = ['dp','graph','math','greedy','string','ds','other'];
+let nbDraftTags = [], nbFilter = 'all';
+function newProblem(o){
+  return {id:uid(), title:(o.title||'').trim(), link:safeUrl(o.link), tags:o.tags||[], why:(o.why||'').trim(), idea:(o.idea||'').trim(),
+          added:currentDayKey, box:0, next:addDays(currentDayKey,REVIEW_STEPS[0]), reviews:0};
+}
+function problemCard(p, review){
+  const link = safeUrl(p.link);
+  const status = p.mastered ? 'Mastered ✓' : (p.next ? 'Next: '+prettyDate(p.next) : '');
+  return `<div class="nb-item">
+    <div class="nb-title"><span>${link?`<a href="${esc(link)}" target="_blank" rel="noopener">${esc(p.title)} ↗</a>`:esc(p.title)}</span>
+      <button type="button" class="danger-ghost" data-nb-del="${p.id}">×</button></div>
+    ${(p.tags&&p.tags.length)?`<div class="nb-tags">${p.tags.map(t=>`<span class="nb-tag">${esc(t)}</span>`).join('')}</div>`:''}
+    ${p.why?`<div class="nb-note"><b>Stuck on:</b> ${esc(p.why)}</div>`:''}
+    ${p.idea?`<div class="nb-note"><b>Key idea:</b> ${esc(p.idea)}</div>`:''}
+    <div class="hint" style="margin:6px 0 0;">${status}${p.reviews?' • reviewed '+p.reviews+'×':''}</div>
+    ${review?`<div class="nb-actions"><button type="button" class="primary sm-btn" data-nb-ok="${p.id}">✓ Remembered</button><button type="button" class="ghost sm-btn" data-nb-no="${p.id}">↺ Forgot</button></div>`:''}
+  </div>`;
+}
+function reviewProblem(id, ok){
+  const p = data.problems.find(x=>x.id===id); if(!p) return;
+  if(ok){
+    p.box = (p.box||0)+1;
+    if(p.box>=REVIEW_STEPS.length){ p.next=null; p.mastered=true; }
+    else p.next = addDays(currentDayKey, REVIEW_STEPS[p.box]);
+  } else { p.box=0; p.mastered=false; p.next=addDays(currentDayKey, REVIEW_STEPS[0]); }
+  p.reviews = (p.reviews||0)+1;
+  save(); if(ok) playDone();
+  renderNotebook(); renderToday(); renderCalendar();
+}
+function renderNotebook(){
+  ensureExtras();
+  const el = document.getElementById('sec-notebook');
+  const due = data.problems.filter(p=>p.next && p.next<=currentDayKey).sort((a,b)=>a.next.localeCompare(b.next));
+  const rest = data.problems.filter(p=>!(p.next && p.next<=currentDayKey) && (nbFilter==='all' || (p.tags||[]).includes(nbFilter)))
+    .sort((a,b)=>(a.next||'9999').localeCompare(b.next||'9999'));
+  el.innerHTML = `
+    <div class="card">
+      <div class="section-title">Revise today <span class="count-chip">${due.length}</span></div>
+      ${due.length ? due.map(p=>problemCard(p,true)).join('') : '<p class="hint" style="margin:0;">Nothing to revise today. 🎉</p>'}
+    </div>
+    <div class="card">
+      <div class="section-title">Add a problem</div>
+      <label class="field-label">Problem</label>
+      <input id="nb-title" type="text" maxlength="140" placeholder="e.g. CSES – Coin Combinations I" autocomplete="off" />
+      <label class="field-label" style="margin-top:8px;">Link (optional)</label>
+      <input id="nb-link" type="text" placeholder="https://…" autocomplete="off" />
+      <label class="field-label" style="margin-top:8px;">Topic</label>
+      <div class="btn-row" style="margin-top:4px;">${PROBLEM_TAGS.map(t=>`<button type="button" class="toggle-btn sm ${nbDraftTags.includes(t)?'on':''}" data-nb-tag="${t}">${t}</button>`).join('')}</div>
+      <label class="field-label" style="margin-top:8px;">Why did I get stuck?</label>
+      <textarea id="nb-why" rows="2" maxlength="400"></textarea>
+      <label class="field-label" style="margin-top:8px;">Key idea / solution</label>
+      <textarea id="nb-idea" rows="2" maxlength="600"></textarea>
+      <button type="button" class="primary" id="nb-add" style="margin-top:10px;">Add to notebook</button>
+      <p class="hint" style="margin-bottom:0;">Revision comes back after 1, 3, 7, 14 and 30 days.</p>
+    </div>
+    <div class="card">
+      <div class="section-title">All problems <span class="count-chip">${data.problems.length}</span></div>
+      <div class="btn-row" style="margin-bottom:6px;">${['all',...PROBLEM_TAGS].map(t=>`<button type="button" class="toggle-btn sm ${nbFilter===t?'on':''}" data-nb-filter="${t}">${t}</button>`).join('')}</div>
+      ${rest.length ? rest.map(p=>problemCard(p,false)).join('') : '<p class="hint">No problems here yet.</p>'}
+    </div>`;
+  el.querySelectorAll('[data-nb-tag]').forEach(b=> b.onclick=()=>{
+    const t=b.dataset.nbTag;
+    keepDraft(); nbDraftTags = nbDraftTags.includes(t) ? nbDraftTags.filter(x=>x!==t) : [...nbDraftTags,t]; renderNotebook(); restoreDraft();
+  });
+  el.querySelectorAll('[data-nb-filter]').forEach(b=> b.onclick=()=>{ keepDraft(); nbFilter=b.dataset.nbFilter; renderNotebook(); restoreDraft(); });
+  el.querySelectorAll('[data-nb-ok]').forEach(b=> b.onclick=()=>reviewProblem(b.dataset.nbOk,true));
+  el.querySelectorAll('[data-nb-no]').forEach(b=> b.onclick=()=>reviewProblem(b.dataset.nbNo,false));
+  el.querySelectorAll('[data-nb-del]').forEach(b=> b.onclick=()=> confirmAction('Delete this problem from the notebook?', ()=>{
+    data.problems = data.problems.filter(x=>x.id!==b.dataset.nbDel); save(); renderNotebook(); renderToday(); renderCalendar();
+  }));
+  document.getElementById('nb-add').onclick = ()=>{
+    const title = document.getElementById('nb-title').value.trim();
+    if(!title){ document.getElementById('nb-title').focus(); return; }
+    data.problems.push(newProblem({
+      title, link:document.getElementById('nb-link').value, tags:[...nbDraftTags],
+      why:document.getElementById('nb-why').value, idea:document.getElementById('nb-idea').value
+    }));
+    nbDraftTags=[]; draft=null; save(); playDone(); renderNotebook(); renderToday(); renderCalendar();
+  };
+}
+let draft=null;
+function keepDraft(){
+  const g=id=>{const e=document.getElementById(id); return e?e.value:'';};
+  draft={title:g('nb-title'),link:g('nb-link'),why:g('nb-why'),idea:g('nb-idea')};
+}
+function restoreDraft(){
+  if(!draft) return;
+  const s=(id,v)=>{const e=document.getElementById(id); if(e) e.value=v;};
+  s('nb-title',draft.title); s('nb-link',draft.link); s('nb-why',draft.why); s('nb-idea',draft.idea);
+}
+
+/* ---------- Quick Capture (inbox) + revise reminder on Today ---------- */
+function moveInbox(id, dest){
+  const i = data.inbox.findIndex(x=>x.id===id); if(i<0||!dest) return;
+  const it = data.inbox[i];
+  if(dest==='problem') data.problems.push(newProblem({title:it.text}));
+  else if(data.todos[dest]) data.todos[dest].push({id:uid(), text:it.text, done:false, priority:'Medium', due:''});
+  else return;
+  data.inbox.splice(i,1); save(); playDone();
+  renderToday(); renderTodo(); renderNotebook(); renderCalendar();
+}
+function addInbox(){
+  const input=document.getElementById('inbox-input'); const text=input.value.trim(); if(!text) return;
+  data.inbox.unshift({id:uid(), text, at:Date.now()}); save(); renderToday();
+  const again=document.getElementById('inbox-input'); if(again) again.focus();
+}
+const _renderTodayBase = renderToday;
+renderToday = function(){
+  _renderTodayBase();
+  ensureExtras();
+  const el = document.getElementById('sec-today'); if(!el) return;
+  const dueCount = data.problems.filter(p=>p.next && p.next<=currentDayKey).length;
+  const html = `
+    <div class="card" id="inbox-card">
+      <div class="section-title">Quick capture</div>
+      <div class="win-row"><input id="inbox-input" type="text" maxlength="200" placeholder="Anything on your mind…" autocomplete="off" style="margin:0;" /><button type="button" class="primary" id="inbox-add">Add</button></div>
+      ${data.inbox.map(it=>`<div class="inbox-item"><span>${esc(it.text)}</span>
+        <select data-inbox-move="${it.id}"><option value="">Move to…</option>
+          <option value="icpc">To-Do · ICPC</option><option value="uni">To-Do · Uni</option><option value="personal">To-Do · Personal</option><option value="problem">Problem Notebook</option></select>
+        <button type="button" class="danger-ghost" data-inbox-del="${it.id}">×</button></div>`).join('')}
+    </div>
+    ${dueCount ? `<div class="card" style="border-color:var(--accent); background:var(--accent-soft);">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+        <div><div class="section-title" style="margin:0;">🔁 ${dueCount} problem${dueCount>1?'s':''} to revise</div><div class="hint" style="margin:2px 0 0;">From your Problem Notebook</div></div>
+        <button type="button" class="primary sm-btn" id="go-notebook">Open</button></div></div>` : ''}`;
+  el.insertAdjacentHTML('afterbegin', html);
+  document.getElementById('inbox-add').onclick = addInbox;
+  document.getElementById('inbox-input').onkeydown = e=>{ if(e.key==='Enter'){ e.preventDefault(); addInbox(); } };
+  el.querySelectorAll('[data-inbox-move]').forEach(sel=> sel.onchange=()=>moveInbox(sel.dataset.inboxMove, sel.value));
+  el.querySelectorAll('[data-inbox-del]').forEach(b=> b.onclick=()=>{ data.inbox=data.inbox.filter(x=>x.id!==b.dataset.inboxDel); save(); renderToday(); });
+  const gn=document.getElementById('go-notebook'); if(gn) gn.onclick=()=>switchTab('notebook');
+};
+
+/* ---------- To-Do: List / Board (Kanban) view ---------- */
+let todoView = 'list';
+try{ todoView = localStorage.getItem('planner_todo_view')==='board' ? 'board' : 'list'; }catch(e){}
+const KB_COLS = [['todo','To do'],['doing','In progress'],['done','Done']];
+const kbStatus = t => t.done ? 'done' : (t.status==='doing' ? 'doing' : 'todo');
+function boardHtml(){
+  const items = data.todos[todoActiveCat] || [];
+  const order = {High:0,Medium:1,Low:2};
+  return `<div class="kb">${KB_COLS.map(([k,label],ci)=>{
+    const list = items.filter(t=>kbStatus(t)===k).sort((a,b)=>(order[a.priority]??1)-(order[b.priority]??1));
+    return `<div class="kb-col"><div class="kb-head">${label} <span class="count-chip">${list.length}</span></div>
+      ${list.map(t=>`<div class="kb-card ${t.done?'done':''}">
+        <div class="txt">${esc(t.text)}</div>
+        <div class="kb-meta"><span class="prio-badge prio-${t.priority||'Medium'}">${t.priority||'Medium'}</span>${t.due?`<span class="due-chip">${esc(t.due)}</span>`:''}</div>
+        <div class="kb-actions">
+          ${ci>0?`<button type="button" class="ghost sm-btn" data-kb-move="${t.id}" data-dir="-1">◀</button>`:''}
+          ${ci<2?`<button type="button" class="ghost sm-btn" data-kb-move="${t.id}" data-dir="1">▶</button>`:''}
+          <button type="button" class="danger-ghost" data-kb-del="${t.id}">×</button>
+        </div></div>`).join('') || '<div class="hint" style="margin:0;">Empty</div>'}
+    </div>`;}).join('')}</div>`;
+}
+function moveTodo(id, dir){
+  const t = (data.todos[todoActiveCat]||[]).find(x=>x.id===id); if(!t) return;
+  const keys = KB_COLS.map(c=>c[0]);
+  const nxt = keys[Math.max(0, Math.min(2, keys.indexOf(kbStatus(t))+dir))];
+  t.done = (nxt==='done'); t.status = nxt;
+  save(); if(t.done) playDone(); renderBoard();
+}
+function renderBoard(){
+  const list = document.getElementById('todo-list'); if(!list) return;
+  list.innerHTML = boardHtml();
+  list.querySelectorAll('[data-kb-move]').forEach(b=> b.onclick=()=>moveTodo(b.dataset.kbMove, Number(b.dataset.dir)));
+  list.querySelectorAll('[data-kb-del]').forEach(b=> b.onclick=()=>{ deleteTodo(b.dataset.kbDel); });
+}
+const _renderTodoListBase = renderTodoList;
+renderTodoList = function(){ if(todoView==='board') renderBoard(); else _renderTodoListBase(); };
+const _renderTodoBase = renderTodo;
+renderTodo = function(){
+  _renderTodoBase();
+  const el = document.getElementById('sec-todo');
+  el.insertAdjacentHTML('afterbegin', `<div class="view-toggle">
+    <button type="button" class="toggle-btn ${todoView==='list'?'on':''}" data-view="list">☰ List</button>
+    <button type="button" class="toggle-btn ${todoView==='board'?'on':''}" data-view="board">▦ Board</button></div>`);
+  el.querySelectorAll('[data-view]').forEach(b=> b.onclick=()=>{
+    todoView=b.dataset.view; try{ localStorage.setItem('planner_todo_view', todoView); }catch(e){} renderTodo();
+  });
+};
+
+/* ---------- Calendar ---------- */
+let calMonth = (()=>{ const d=new Date(); d.setDate(1); d.setHours(0,0,0,0); return d; })();
+let calSel = null;
+function calendarEvents(){
+  const map = {};
+  const at = k => (map[k] = map[k] || {due:[], exam:[], review:[]});
+  ['icpc','uni','personal'].forEach(cat=> (data.todos[cat]||[]).forEach(t=>{ if(t.due) at(t.due).due.push({...t,cat}); }));
+  data.courses.forEach(c=> (c.components||[]).forEach(comp=>{ if(comp.date) at(comp.date).exam.push({course:c.name, name:comp.name}); }));
+  data.problems.forEach(p=>{ if(p.next) at(p.next).review.push(p); });
+  return map;
+}
+function renderCalendar(){
+  ensureExtras();
+  const el = document.getElementById('sec-calendar'); if(!el) return;
+  if(!calSel) calSel = currentDayKey;
+  const events = calendarEvents();
+  const y = calMonth.getFullYear(), m = calMonth.getMonth();
+  const first = new Date(y,m,1), startOffset = first.getDay();
+  const cells = [];
+  for(let i=0;i<42;i++){
+    const d = new Date(y,m,1-startOffset+i), k = dateKey(d), ev = events[k] || {due:[],exam:[],review:[]};
+    const dd = data.dates[k];
+    const active = dd && (dayHours(dd)>0 || cpCount(dd)>0 || touchCount(dd)>0 || (typeof dd.win==='string' && dd.win.trim()));
+    const dots = [];
+    if(ev.due.some(t=>!t.done)) dots.push('var(--red)');
+    if(ev.exam.length) dots.push('var(--amber)');
+    if(ev.review.length) dots.push('var(--accent)');
+    if(active) dots.push('var(--green)');
+    cells.push(`<button type="button" class="cal-cell ${d.getMonth()!==m?'other':''} ${k===currentDayKey?'today':''} ${k===calSel?'sel':''}" data-cal="${k}">
+      <span>${d.getDate()}</span><span class="cal-dots">${dots.map(c=>`<i style="background:${k===calSel?'#fff':c}"></i>`).join('')}</span></button>`);
+  }
+  const k = calSel, ev = events[k] || {due:[],exam:[],review:[]}, dd = data.dates[k];
+  const wd = WEEKDAYS[keyToDate(k).getDay()];
+  const classes = [];
+  data.courses.forEach(c=> (c.slots||[]).forEach(s=>{ if(s.day===wd) classes.push({name:c.name, time:s.time, endTime:s.endTime}); }));
+  classes.sort((a,b)=>(a.time||'').localeCompare(b.time||''));
+  const blocks = (data.blocks[k]||[]).slice().sort((a,b)=>a.start.localeCompare(b.start));
+  const sec = (title, rows) => rows.length ? `<div class="cal-sec"><h4>${title}</h4>${rows.join('')}</div>` : '';
+  const actLines = [];
+  if(dd){
+    if(dayHours(dd)>0) actLines.push(`<div class="cal-line">Studied ${dayHours(dd).toFixed(1)}h</div>`);
+    if(cpCount(dd)>0) actLines.push(`<div class="cal-line">CP: ${cpCount(dd)} problem(s)</div>`);
+    if(namazDoneCount(dd)>0) actLines.push(`<div class="cal-line">Namaz: ${namazDoneCount(dd)}/5</div>`);
+    if(touchCount(dd)>0) actLines.push(`<div class="cal-line">Touched ${touchCount(dd,'work')} dev/study + ${touchCount(dd,'life')} life item(s)</div>`);
+    if(typeof dd.win==='string' && dd.win.trim()) actLines.push(`<div class="cal-line">🏆 ${esc(dd.win)}</div>`);
+  }
+  el.innerHTML = `
+    <div class="card">
+      <div class="cal-head">
+        <button type="button" class="ghost sm-btn" id="cal-prev">‹</button>
+        <div class="ttl">${first.toLocaleDateString('en-US',{month:'long', year:'numeric'})}</div>
+        <button type="button" class="ghost sm-btn" id="cal-next">›</button>
+      </div>
+      <div class="cal-grid">${WEEKDAYS.map(w=>`<div class="cal-dow">${w}</div>`).join('')}${cells.join('')}</div>
+      <div class="cal-legend"><span><i style="background:var(--red)"></i>Due</span><span><i style="background:var(--amber)"></i>Exam</span><span><i style="background:var(--accent)"></i>Revise</span><span><i style="background:var(--green)"></i>Activity</span></div>
+      <div style="margin-top:10px;"><button type="button" class="ghost sm-btn" id="cal-today">Today</button></div>
+    </div>
+    <div class="card">
+      <div class="section-title">${prettyDate(k)}</div>
+      ${sec('Deadlines', ev.due.map(t=>`<div class="cal-line">${t.done?'✓ ':''}${esc(t.text)} <span class="hint" style="margin:0;">(${TODO_CATS[t.cat]} • ${t.priority||'Medium'})</span></div>`))}
+      ${sec('Exams', ev.exam.map(t=>`<div class="cal-line">${esc(t.course)} — ${esc(t.name)}</div>`))}
+      ${sec('Revise', ev.review.map(p=>`<div class="cal-line">${esc(p.title)}</div>`))}
+      ${sec('Classes', classes.map(c=>`<div class="cal-line">${fmt12(c.time)}${c.endTime?'–'+fmt12(c.endTime):''} — ${esc(c.name)}</div>`))}
+      ${sec('Planned blocks', blocks.map(b=>`<div class="cal-line">${b.done?'✓ ':''}${fmt12(b.start)}–${fmt12(b.end)} — ${esc(b.label)}</div>`))}
+      ${sec('Activity', actLines)}
+      ${(!ev.due.length && !ev.exam.length && !ev.review.length && !classes.length && !blocks.length && !actLines.length) ? '<p class="hint" style="margin:0;">Nothing on this day yet.</p>' : ''}
+      <div class="cal-sec"><h4>Add a task for this day</h4>
+        <input id="cal-task" type="text" maxlength="140" placeholder="e.g. Submit lab report" autocomplete="off" />
+        <div class="win-row" style="margin-top:8px;">
+          <select id="cal-cat" style="margin:0;"><option value="uni">Uni</option><option value="icpc">ICPC</option><option value="personal">Personal</option></select>
+          <button type="button" class="primary" id="cal-add">Add</button>
+          <button type="button" class="ghost" id="cal-plan">Plan this day →</button>
+        </div></div>
+    </div>`;
+  el.querySelectorAll('[data-cal]').forEach(b=> b.onclick=()=>{
+    calSel=b.dataset.cal; const d=keyToDate(calSel);
+    if(d.getMonth()!==calMonth.getMonth()){ calMonth=new Date(d.getFullYear(), d.getMonth(), 1); }
+    renderCalendar();
+  });
+  document.getElementById('cal-prev').onclick=()=>{ calMonth=new Date(calMonth.getFullYear(), calMonth.getMonth()-1, 1); renderCalendar(); };
+  document.getElementById('cal-next').onclick=()=>{ calMonth=new Date(calMonth.getFullYear(), calMonth.getMonth()+1, 1); renderCalendar(); };
+  document.getElementById('cal-today').onclick=()=>{ calSel=currentDayKey; const d=new Date(); calMonth=new Date(d.getFullYear(), d.getMonth(), 1); renderCalendar(); };
+  const addTask = ()=>{
+    const inp=document.getElementById('cal-task'); const text=inp.value.trim(); if(!text){ inp.focus(); return; }
+    const cat=document.getElementById('cal-cat').value;
+    data.todos[cat].push({id:uid(), text, done:false, priority:'Medium', due:calSel});
+    save(); renderCalendar(); renderTodo(); renderToday();
+  };
+  document.getElementById('cal-add').onclick = addTask;
+  document.getElementById('cal-task').onkeydown = e=>{ if(e.key==='Enter'){ e.preventDefault(); addTask(); } };
+  document.getElementById('cal-plan').onclick = ()=>{ planKey=calSel; switchTab('plan'); };
+}
+
+/* ---------- Time-blocking (Plan Day) ---------- */
+const BLOCK_CATS = {study:['Study','#2E5CF6'], cp:['CP','#DB8B00'], class:['Class','#64748B'], life:['Life','#0EA968'], other:['Other','#8B5CF6']};
+const TL_PX = 46;
+let planKey = null;
+const toMin = t => { const [h,m]=String(t||'0:0').split(':').map(Number); return (h||0)*60+(m||0); };
+const fromMin = n => String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
+function classBlocksFor(key){
+  const wd = WEEKDAYS[keyToDate(key).getDay()], out=[];
+  data.courses.forEach(c=> (c.slots||[]).forEach(s=>{
+    if(s.day!==wd || !s.time) return;
+    const st=toMin(s.time); let en = s.endTime ? toMin(s.endTime) : st+60; if(en<=st) en=st+60;
+    out.push({id:'c_'+c.id+'_'+s.time, start:fromMin(st), end:fromMin(Math.min(en,1439)), label:c.name, cat:'class', ro:true});
+  }));
+  return out;
+}
+function layoutBlocks(list){
+  const items = list.map(b=>({b, s:toMin(b.start), e:toMin(b.end)})).sort((a,b)=>a.s-b.s||a.e-b.e);
+  let cluster=[], clusterEnd=-1;
+  const flush = ()=>{
+    const lanes=[]; cluster.forEach(it=>{ let i=lanes.findIndex(end=>end<=it.s); if(i<0){ i=lanes.length; lanes.push(0); } lanes[i]=it.e; it.lane=i; });
+    cluster.forEach(it=> it.lanes=lanes.length);
+  };
+  items.forEach(it=>{ if(cluster.length && it.s>=clusterEnd){ flush(); cluster=[]; clusterEnd=-1; } cluster.push(it); clusterEnd=Math.max(clusterEnd,it.e); });
+  if(cluster.length) flush();
+  return items;
+}
+function renderPlan(){
+  ensureExtras();
+  const el = document.getElementById('sec-plan'); if(!el) return;
+  if(!planKey) planKey = currentDayKey;
+  const k = planKey;
+  const mine = (data.blocks[k]||[]);
+  const all = [...classBlocksFor(k), ...mine];
+  const laid = layoutBlocks(all);
+  const minS = all.length ? Math.min(...all.map(b=>toMin(b.start))) : 8*60;
+  const maxE = all.length ? Math.max(...all.map(b=>toMin(b.end))) : 20*60;
+  const startH = Math.max(0, Math.min(6, Math.floor(minS/60)));
+  const endH = Math.min(24, Math.max(22, Math.ceil(maxE/60)));
+  const height = (endH-startH)*TL_PX;
+  const hoursHtml = []; for(let h=startH; h<=endH; h++) hoursHtml.push(`<div class="tl-hour" style="top:${(h-startH)*TL_PX}px;"><span>${h===24?'24:00':fmt12(fromMin(h*60)).replace(':00','')}</span></div>`);
+  const blocksHtml = laid.map(({b,s,e,lane,lanes})=>{
+    const top=(s-startH*60)*TL_PX/60, h=Math.max((e-s)*TL_PX/60, 24), w=100/lanes;
+    const col=(BLOCK_CATS[b.cat]||BLOCK_CATS.other)[1];
+    return `<div class="tl-block ${b.ro?'ro':''} ${b.done?'done':''}" style="--bc:${col}; top:${top}px; height:${h}px; left:calc(${lane*w}% + 1px); width:calc(${w}% - 2px);">
+      <div class="tl-t"><span>${esc(b.label)}</span>${b.ro?'':`<div class="tl-btns"><button type="button" data-blk-done="${b.id}" title="Done">✓</button><button type="button" data-blk-del="${b.id}" title="Delete">×</button></div>`}</div>
+      ${h>=40?`<div class="tl-tm">${fmt12(b.start)}–${fmt12(b.end)}</div>`:''}</div>`;
+  }).join('');
+  let nowHtml='';
+  if(k===currentDayKey){ const n=new Date(), mins=n.getHours()*60+n.getMinutes(); if(mins>=startH*60 && mins<=endH*60) nowHtml=`<div class="tl-now" style="top:${(mins-startH*60)*TL_PX/60}px;"></div>`; }
+  // planned vs actual
+  const plannedBy = {}; mine.forEach(b=>{ plannedBy[b.cat]=(plannedBy[b.cat]||0)+(toMin(b.end)-toMin(b.start)); });
+  const plannedFocus = ((plannedBy.study||0)+(plannedBy.cp||0))/60;
+  const dd = data.dates[k]; const actualStudy = dd ? dayHours(dd) : 0;
+  const doneCount = mine.filter(b=>b.done).length;
+  const defStart = (()=>{ if(!mine.length) return '09:00'; const last=Math.max(...mine.map(b=>toMin(b.end))); return fromMin(Math.min(last,22*60)); })();
+  const defEnd = fromMin(Math.min(toMin(defStart)+60, 23*60+59));
+  el.innerHTML = `
+    <div class="card">
+      <div class="plan-nav">
+        <button type="button" class="ghost sm-btn" id="plan-prev">‹</button>
+        <div class="ttl">${k===currentDayKey?'Today · ':''}${prettyDate(k)}</div>
+        <button type="button" class="ghost sm-btn" id="plan-next">›</button>
+      </div>
+      ${k!==currentDayKey?'<div style="text-align:center; margin-top:8px;"><button type="button" class="ghost sm-btn" id="plan-today">Back to today</button></div>':''}
+    </div>
+    <div class="card">
+      <div class="section-title">Add a time block</div>
+      <label class="field-label">What</label>
+      <input id="blk-label" type="text" maxlength="80" placeholder="e.g. CSES set + upsolve" autocomplete="off" />
+      <div class="row2" style="margin-top:8px;">
+        <div><label class="field-label">From</label><input id="blk-start" type="time" value="${defStart}" /></div>
+        <div><label class="field-label">To</label><input id="blk-end" type="time" value="${defEnd}" /></div>
+      </div>
+      <label class="field-label" style="margin-top:8px;">Type</label>
+      <div class="btn-row" style="margin-top:4px;">${Object.entries(BLOCK_CATS).filter(([id])=>id!=='class').map(([id,[nm]])=>`<button type="button" class="toggle-btn sm ${(planCat===id)?'on':''}" data-blk-cat="${id}">${nm}</button>`).join('')}</div>
+      <button type="button" class="primary" id="blk-add" style="margin-top:10px;">Add block</button>
+      <p class="hint" id="blk-msg" style="margin:8px 0 0;"></p>
+    </div>
+    <div class="card">
+      <div class="section-title">Timeline</div>
+      <div class="tl" style="height:${height}px;">
+        ${hoursHtml.join('')}
+        <div class="tl-area">${blocksHtml}${nowHtml}</div>
+      </div>
+      <p class="hint" style="margin-bottom:0;">Striped blocks are your classes (from Courses).</p>
+    </div>
+    <div class="card">
+      <div class="section-title">Planned vs actual</div>
+      <div class="grid3">
+        <div class="card" style="margin:0;"><div class="hint" style="margin:0;">Blocks done</div><div class="stat-num" style="font-size:20px;">${doneCount}/${mine.length}</div></div>
+        <div class="card" style="margin:0;"><div class="hint" style="margin:0;">Planned study + CP</div><div class="stat-num" style="font-size:20px;">${plannedFocus.toFixed(1)}h</div></div>
+        <div class="card" style="margin:0;"><div class="hint" style="margin:0;">Actual study logged</div><div class="stat-num" style="font-size:20px;">${actualStudy.toFixed(1)}h</div></div>
+      </div>
+      ${Object.keys(plannedBy).length ? `<p class="hint" style="margin-bottom:0;">${Object.entries(plannedBy).map(([c,mn])=>`${BLOCK_CATS[c][0]} ${(mn/60).toFixed(1)}h`).join(' • ')}</p>` : ''}
+    </div>`;
+  document.getElementById('plan-prev').onclick=()=>{ planKey=addDays(planKey,-1); renderPlan(); };
+  document.getElementById('plan-next').onclick=()=>{ planKey=addDays(planKey,1); renderPlan(); };
+  const pt=document.getElementById('plan-today'); if(pt) pt.onclick=()=>{ planKey=currentDayKey; renderPlan(); };
+  el.querySelectorAll('[data-blk-cat]').forEach(b=> b.onclick=()=>{ planCat=b.dataset.blkCat; el.querySelectorAll('[data-blk-cat]').forEach(x=>x.classList.toggle('on', x.dataset.blkCat===planCat)); });
+  document.getElementById('blk-add').onclick = ()=>{
+    const label=document.getElementById('blk-label').value.trim(), st=document.getElementById('blk-start').value, en=document.getElementById('blk-end').value;
+    const msg=document.getElementById('blk-msg');
+    if(!label){ msg.textContent='Give the block a name.'; document.getElementById('blk-label').focus(); return; }
+    if(!st||!en||toMin(en)<=toMin(st)){ msg.textContent='End time must be after start time.'; return; }
+    (data.blocks[k] = data.blocks[k] || []).push({id:uid(), start:st, end:en, label, cat:planCat, done:false});
+    save(); renderPlan(); renderCalendar();
+  };
+  document.getElementById('blk-label').onkeydown = e=>{ if(e.key==='Enter'){ e.preventDefault(); document.getElementById('blk-add').click(); } };
+  el.querySelectorAll('[data-blk-done]').forEach(b=> b.onclick=()=>{
+    const blk=(data.blocks[k]||[]).find(x=>x.id===b.dataset.blkDone); if(!blk) return; blk.done=!blk.done; save(); if(blk.done) playDone(); renderPlan(); renderCalendar();
+  });
+  el.querySelectorAll('[data-blk-del]').forEach(b=> b.onclick=()=>{
+    data.blocks[k]=(data.blocks[k]||[]).filter(x=>x.id!==b.dataset.blkDel); if(!data.blocks[k].length) delete data.blocks[k]; save(); renderPlan(); renderCalendar();
+  });
+}
+let planCat = 'study';
+
+/* re-render the Notion-style pages whenever they are opened, so they always show fresh data */
+const _switchTabBase = switchTab;
+switchTab = function(tab){
+  _switchTabBase(tab);
+  if(tab==='plan') renderPlan();
+  if(tab==='calendar') renderCalendar();
+  if(tab==='notebook') renderNotebook();
+  if(tab==='today') renderToday();
+};
+
 /* ============ CLOCK / MIDNIGHT ============ */
 function updateClock(){
   const now = new Date();
@@ -1782,7 +2278,7 @@ function updateClock(){
   if(nowKey !== currentDayKey){ currentDayKey = nowKey; renderAll(); }
 }
 function renderAll(){
-  renderToday(); renderStudy(); renderPomodoro(); renderCourses(); renderTodo(); renderDeen(); renderTouch(); renderStats();
+  renderToday(); renderStudy(); renderPomodoro(); renderCourses(); renderTodo(); renderDeen(); renderTouch(); renderNotebook(); renderCalendar(); renderPlan(); renderStats();
 }
 
 load();

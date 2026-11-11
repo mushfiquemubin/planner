@@ -300,6 +300,15 @@
     #sidebar:not(.open){ -webkit-backdrop-filter:none; backdrop-filter:none; }
     #tabbar{ -webkit-backdrop-filter:blur(18px) saturate(170%); backdrop-filter:blur(18px) saturate(170%); will-change:transform; transform-origin:left bottom; }
   }
+  /* mobile: stop sideways drifting (header buttons were wider than the screen) */
+  @media (max-width:860px){
+    html,body{ overflow-x:hidden; overflow-x:clip; max-width:100%; overscroll-behavior-x:none; }
+    #main{ max-width:100vw; overflow-x:clip; }
+    .topbar{ gap:10px; }
+    .topbar-right{ flex-wrap:wrap; width:100%; gap:8px; }
+    .clock-chip{ font-size:13px; padding:7px 10px; }
+    .topbar-right .icon-btn{ width:38px; height:38px; }
+  }
   @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } }
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){ #sidebar,.card{ background:rgba(255,255,255,0.92); } [data-theme="dark"] #sidebar,[data-theme="dark"] .card{ background:rgba(14,30,48,0.96); } }
 </style>

@@ -221,9 +221,9 @@
   [data-theme="dark"]{ --glass:rgba(255,255,255,0.06); --glass-b:rgba(255,255,255,0.14); --card:var(--glass); --bg:transparent;
     --border:rgba(255,255,255,0.14);
     --shadow:0 12px 34px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.04); }
-  html{ background:#e3eef8; } html[data-theme="dark"]{ background:#08111f; color-scheme:dark; }
+  html{ background:#e3eef8; } html[data-theme="dark"]{ background:#0f1826; color-scheme:dark; }
   body{ min-height:100vh; background:linear-gradient(135deg,#d8e6fb 0%,#e3eef8 50%,#d3eeee 100%) fixed !important; }
-  [data-theme="dark"] body{ background:linear-gradient(135deg,#08111f 0%,#0e2338 55%,#0a2f33 100%) fixed !important; }
+  [data-theme="dark"] body{ background:linear-gradient(160deg,#0f1826 0%,#17263c 55%,#12273b 100%) fixed !important; }
   .card, .clock-chip, .icon-btn, .modal-box, .toggle-btn{ -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); }
   .card{ border:1px solid var(--border); border-radius:22px; box-shadow:var(--shadow); }
   .card:hover{ border-color:var(--accent-glow); }
@@ -268,6 +268,28 @@
   .acct-t{ min-width:0; } .acct-t b{ display:block; font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } .acct-t span{ font-size:11.5px; color:var(--text-secondary); }
   .auth-box{ max-width:360px !important; } .auth-err{ color:var(--red); font-size:12.5px; min-height:18px; margin-top:6px; }
   .auth-or{ text-align:center; font-size:12px; color:var(--text-secondary); margin:12px 0 4px; }
+  /* pill nav + floating glass tab bar */
+  .nav-item{ border-radius:999px; }
+  .nav-item.active{ background:rgba(46,92,246,0.14); color:var(--accent); }
+  [data-theme="dark"] .nav-item.active{ background:rgba(90,162,255,0.2); }
+  #tabbar{ display:none; }
+  @media (max-width:860px){
+    #hamburger{ display:none !important; }
+    #main{ padding-bottom:118px !important; }
+    #sidebar{ z-index:80; }
+    #tabbar{ display:flex; position:fixed; z-index:60; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom,0px)); height:68px; padding:6px; gap:2px;
+      border-radius:34px; border:1px solid var(--border);
+      background:linear-gradient(180deg,rgba(255,255,255,0.66),rgba(255,255,255,0.36));
+      -webkit-backdrop-filter:blur(26px) saturate(190%); backdrop-filter:blur(26px) saturate(190%);
+      box-shadow:0 14px 40px rgba(30,45,100,0.25), inset 0 1px 0 rgba(255,255,255,0.95); }
+    [data-theme="dark"] #tabbar{ background:linear-gradient(180deg,rgba(62,82,118,0.52),rgba(30,44,70,0.58));
+      box-shadow:0 14px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.18); }
+    #tabbar button{ flex:1; min-width:0; margin:0; padding:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+      border:0; background:transparent; border-radius:28px; color:var(--text-secondary); font:600 10.5px/1 inherit; font-family:inherit; cursor:pointer; box-shadow:none; }
+    #tabbar button svg{ width:22px; height:22px; margin:0; }
+    #tabbar button.active{ background:rgba(46,92,246,0.15); color:var(--accent); box-shadow:inset 0 1px 0 rgba(255,255,255,0.55); }
+    [data-theme="dark"] #tabbar button.active{ background:rgba(90,162,255,0.22); }
+  }
   @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } }
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){ #sidebar,.card{ background:rgba(255,255,255,0.92); } [data-theme="dark"] #sidebar,[data-theme="dark"] .card{ background:rgba(14,30,48,0.96); } }
 </style>
@@ -348,6 +370,16 @@ const NAV_ITEMS = [
   {id:'stats', label:'Stats', icon:'stats'}
 ];
 document.getElementById('nav-list').innerHTML = NAV_ITEMS.map(n=>`<button class="nav-item" data-tab="${n.id}">${svgIcon(n.icon)}${n.label}</button>`).join('');
+(function(){
+  const tb=document.createElement('nav'); tb.id='tabbar';
+  const short={study:'Study',pomodoro:'Focus'};
+  tb.innerHTML=['today','study','pomodoro','todo','deen'].map(id=>{
+    const n=NAV_ITEMS.find(x=>x.id===id);
+    return `<button class="nav-item" data-tab="${id}">${svgIcon(n.icon)}<span>${short[id]||n.label}</span></button>`;
+  }).join('')+`<button id="tb-more" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg><span>More</span></button>`;
+  document.body.appendChild(tb);
+  document.getElementById('tb-more').onclick=()=>document.getElementById('sidebar').classList.toggle('open');
+})();
 
 /* ============ STATE ============ */
 const STORAGE_KEY = "daily_planner_data_v3";
@@ -711,7 +743,7 @@ function upcomingDueItems(){
     const d = new Date(t.due+'T00:00:00');
     const daysLeft = Math.round((d-today)/86400000);
     return {...t, daysLeft};
-  }).filter(t=>t.daysLeft<=2).sort((a,b)=>a.daysLeft-b.daysLeft);
+  }).filter(t=>t.daysLeft>=0 && t.daysLeft<=2).sort((a,b)=>a.daysLeft-b.daysLeft);
 }
 function upcomingExams(){
   const today = new Date(); today.setHours(0,0,0,0);
@@ -721,7 +753,7 @@ function upcomingExams(){
       if(!comp.date) return;
       const d = new Date(comp.date+'T00:00:00');
       const daysLeft = Math.round((d-today)/86400000);
-      if(daysLeft<=3) items.push({course:c.name, name:comp.name, date:comp.date, daysLeft});
+      if(daysLeft>=0 && daysLeft<=3) items.push({course:c.name, name:comp.name, date:comp.date, daysLeft});
     });
   });
   return items.sort((a,b)=>a.daysLeft-b.daysLeft);

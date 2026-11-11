@@ -2322,7 +2322,9 @@ const FIREBASE_CONFIG = {
   function push(){
     if(!user||!docRef) return;
     if(!getTs()) setTs(Date.now());
-    docRef.set({json:JSON.stringify(data), updatedAt:getTs()})
+    const json=JSON.stringify(data);
+    if(json.length>900000){ setStatus('Too big to sync'); return; }
+    docRef.set({json:json, updatedAt:getTs()})
       .then(()=>setStatus('Synced')).catch(()=>setStatus('Offline – will retry'));
   }
   function applyRemote(r){
@@ -2331,7 +2333,7 @@ const FIREBASE_CONFIG = {
     inc.dates=inc.dates||{}; inc.courses=inc.courses||[]; inc.todos=inc.todos||{icpc:[],uni:[],personal:[]};
     if(!inc.todos.personal) inc.todos.personal=[]; inc.settings=inc.settings||{studyGoal:3,cpGoal:3}; inc.cgpaEntries=inc.cgpaEntries||[];
     inc.courses.forEach(migrateCourse);
-    applying=true; data=inc; save(); setTs(r.updatedAt); applying=false;
+    applying=true; data=inc; try{ ensureExtras(); }catch(e){} save(); setTs(r.updatedAt); applying=false;
     renderAll();
     if(typeof renderStudyCharts==='function') setTimeout(renderStudyCharts,30);
     if(typeof renderSuccessChart==='function') setTimeout(renderSuccessChart,30);
